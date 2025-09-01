@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+  margin:0;
+  font-family:Poppins,sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  background: url("surprise_bg.jpg") no-repeat center center/cover;
+
+}
+    </style>
+</head>
+<body>
+    <div class="birthday-card">
+        <h1> Happy Birthday Chakriii 🥳🎉❤️❤️</h1>
+
+        <!-- Cake Section -->
+        <div class="cake-wrapper">
+            <div class="cake-container">
+                <img src="cake.png" id="cake" alt="Cake">
+                <div id="candle-flame"></div>
+            </div>
+        </div>
+        <button id="blow-candle-btn">Blow Candle</button>
+
+
+        <!-- Message appears after blowing candle -->
+        <div id="after-candle-message" class="hidden">
+            <h2 id="custom-message">Happy birthday to the most favourite person of my life❤️.</h2>
+            <a href="gifts.html">
+        <button id="show-gift-btn">Open Your Surprise Gift 🎁</button>
+      </a>
+        </div>
+        <audio id="birthday-audio" src="happy-birthday.mp3" loop></audio>
+    </div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <script src="script-birthday.js"></script>
+</body>
+</html>

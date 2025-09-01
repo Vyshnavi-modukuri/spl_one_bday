@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Photo Gallery Slider</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<style>
+body {
+  margin:0;
+  font-family:Poppins,sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  background: url("red_bg.webp") no-repeat center center/cover;
+
+}
+
+/* Slider container */
+.slider-wrapper {
+  position: relative;
+  width: 90%;
+  max-width: 900px;
+  overflow: hidden;
+}
+
+/* Slides scroll area */
+.slides-container {
+  display: flex;
+  gap: 20px;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 40px 0;
+  scrollbar-width: none; /* Firefox */
+  align-items: center;
+}
+.slides-container::-webkit-scrollbar { display: none; } /* Chrome */
+
+.slide {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  transform: scale(0.8);
+  transition: transform 0.5s ease;
+  align-items: center;
+  height: 400px; 
+  justify-content: center;
+}
+.slide.active { transform: scale(1); }
+
+.slide img {
+max-height: 100%;
+  width: auto;   
+  border-radius: 10px;
+  display: block;
+}
+
+/* Arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color:white;
+  border:none;
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  font-size:2rem;
+  cursor:pointer;
+  z-index: 10;
+}
+.arrow:hover { background: rgba(0,0,0,0.7); }
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Dots */
+.dots {
+  text-align:center;
+  margin-top:20px;
+}
+.dot {
+  display:inline-block;
+  width:12px; height:12px;
+  background: rgba(0,0,0,0.2);
+  border-radius:50%;
+  margin:0 5px;
+  cursor:pointer;
+  transition: all 0.2s;
+}
+.dot.active {
+  background: #d60000;
+  transform: scale(1.2);
+}
+.heading {
+  text-align: center;
+  color: #d6ab00;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-family: 'Pacifico', cursive;
+  text-shadow: 1px 1px 2px #fff;
+}
+
+</style>
+</head>
+<body>
+
+<div class="slider-wrapper">
+    <div class="heading">Gallery of memories✨</div>
+  <button class="arrow prev">&#10094;</button>
+  <div class="slides-container" id="slides-container">
+    <div class="slide"><img src="img1.jpg" alt="Photo 1"></div>
+    <div class="slide"><img src="img2.jpg" alt="Photo 2"></div>
+    <div class="slide"><img src="img3.jpg" alt="Photo 3"></div>
+    <div class="slide"><img src="img4.jpg" alt="Photo 4"></div>
+    <div class="slide"><img src="img5.png" alt="Photo 5"></div>
+    <div class="slide"><img src="img6.jpg" alt="Photo 6"></div>
+    <div class="slide"><img src="img7.jpg" alt="Photo 7"></div>
+    <div class="slide"><img src="img8.jpg" alt="Photo 8"></div>
+  </div>
+  <button class="arrow next">&#10095;</button>
+  <div class="dots" id="dots"></div>
+</div>
+
+        <audio id="birthday-audio" src="bgm.mp3" autoplay loop></audio>
+    
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const container = document.getElementById('slides-container');
+const dotsContainer = document.getElementById('dots');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+let currentIndex = 0;
+let autoPlayInterval;
+
+// Create dots
+slides.forEach((_,i)=>{
+  const dot = document.createElement('div');
+  dot.classList.add('dot');
+  if(i===0) dot.classList.add('active');
+  dot.addEventListener('click', ()=>goToSlide(i));
+  dotsContainer.appendChild(dot);
+});
+const dots = document.querySelectorAll('.dot');
+
+function updateSlider(){
+  slides.forEach((slide,i)=>{
+    slide.classList.toggle('active', i===currentIndex);
+  });
+  dots.forEach(d=>d.classList.remove('active'));
+  dots[currentIndex].classList.add('active');
+  slides[currentIndex].scrollIntoView({behavior:'smooth', inline:'center'});
+}
+
+function nextSlide(){
+  currentIndex = (currentIndex +1) % slides.length;
+  updateSlider();
+}
+
+function prevSlide(){
+  currentIndex = (currentIndex -1 + slides.length) % slides.length;
+  updateSlider();
+}
+
+function goToSlide(index){
+  currentIndex = index;
+  updateSlider();
+}
+
+// Arrows
+nextBtn.addEventListener('click', ()=>{
+  stopAuto();
+  nextSlide();
+  startAuto();
+});
+prevBtn.addEventListener('click', ()=>{
+  stopAuto();
+  prevSlide();
+  startAuto();
+});
+
+// Auto-play
+function startAuto(){
+  autoPlayInterval = setInterval(nextSlide,3000);
+}
+function stopAuto(){
+  clearInterval(autoPlayInterval);
+}
+container.addEventListener('mouseenter', stopAuto);
+container.addEventListener('mouseleave', startAuto);
+
+// Initialize
+updateSlider();
+startAuto();
+</script>
+
+</body>
+</html>

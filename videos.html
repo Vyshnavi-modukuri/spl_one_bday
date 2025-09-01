@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heartfelt Wishes 🎬</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<style>
+/* General Body */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url('red_bg.webp') no-repeat center center/cover;
+  overflow: hidden;
+}
+
+/* Container */
+.container {
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  padding: 40px 30px;
+  border-radius: 25px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.6);
+  max-width: 900px;
+  width: 90%;
+  animation: popin 1s ease forwards;
+}
+
+/* Heading */
+.title {
+  font-family: 'Pacifico', cursive;
+  color: #ffd600;
+  font-size: 2.8rem;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+}
+
+/* Video Styling */
+.video-card video {
+  width: 100%;
+  max-height: 450px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border: 3px solid #ffd600;
+  background: black;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-card video:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 40px rgba(255, 214, 0, 0.8);
+}
+
+/* Animations */
+@keyframes popin {
+  0% { transform: scale(0.5); opacity: 0; }
+  70% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="title">💖 Heartfelt Wishes from Your Friends 💖</h1>
+  
+  <div class="video-card">
+    <video controls autoplay loop>
+      <source src="video1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Surprise Gifts 🎁</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* General Body */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  /* Background image instead of color */
+  background: url("surprise_bg.jpg") no-repeat center center/cover;
+}
+
+
+/* Gift Card Container */
+.gift-card {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  max-width: 450px;
+  width: 90%;
+  animation: popin 0.8s ease forwards;
+}
+
+.gift-card h1 {
+  color: #d60000;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-family: 'Great Vibes', cursive;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Buttons */
+.gift-btn {
+  display: block;
+  width: 100%;
+  margin: 15px 0;
+  padding: 15px 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: linear-gradient(45deg, #ff6a00, #ee0979);
+  color: #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.gift-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+  background: linear-gradient(45deg, #ee0979, #ff6a00);
+}
+
+/* Animation for card */
+@keyframes popin {
+  0% { transform: scale(0.5); opacity: 0; }
+  70% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+a{
+    text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+  <div class="gift-card">
+    <h1> Here are your surprises 🎉</h1>
+
+    <a href="gallery.html"><button class="gift-btn">🎁 Surprise 1</button></a><br>
+    <a href="videos.html"><button class="gift-btn">🎬 Surprise 2</button></a><br>
+    <a href="msg.html"><button class="gift-btn">💌 Special Message</button></a>
+  </div>
+</body>
+</html>
